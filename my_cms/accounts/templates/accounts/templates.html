@@ -13,11 +13,16 @@
 					<table class="table">
 						<tr>
 							<th>Templates</th>
-							<th>Category</th>
                             <th>Views</th>
                             <th>Pages</th>
 						</tr>
-						
+						{% for i in templates %}
+                        <tr>
+                            <td> {{i.name}}</td>
+                            <td>{{i.views}}</td>
+                            <td>{{i.pages}}</td>
+                        </tr>
+                        {% endfor %}
 					</table>
 				</div>
 			</div>

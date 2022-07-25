@@ -13,29 +13,41 @@
 		<div class="card card-body">
 			<table class="table table-sm">
 				<tr>
-					<th></th>
 					<th>Customer</th>
-					<th>Templates</th>
+					<th>Phone</th>
 				</tr>
-
+                {% for customer in customers %}
+                    <tr>
+                        <td>{{customer.name}}</td>
+                        <td>{{customer.phone}}</td>
+                    </tr>
+                {% endfor %}
 			</table>
 		</div>
 	</div>
 
 	<div class="col-md-7">
-		<h5>LAST 5 ORDERS</h5>
+		<h5>LAST 5 WEBSITES</h5>
 		<hr>
 		<div class="card card-body">
-			<a class="btn btn-primary  btn-sm btn-block" href="">Create More Pages</a>
+			<a class="btn btn-primary  btn-sm btn-block" href="">Create More Websites</a>
 			<table class="table table-sm">
 				<tr>
-					<th>Pages</th>
+					<th>Websites</th>
 					<th>Date Created</th>
 					<th>Status</th>
 					<th>Update</th>
 					<th>Remove</th>
 				</tr>
-		
+                {% for website in websites %}
+                    <tr>
+                        <td>{{website.name}}</td>
+                        <td>{{website.date_created}}</td>
+                        <td>{{website.status}}</td>
+                        <td><a href="">Update</a></td>
+                        <td><a href="">Delete</a></td>
+                    </tr>
+                {% endfor %}
 			</table>
 		</div>
 	</div>
