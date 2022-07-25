@@ -15,5 +15,9 @@ def templates(request):
     templates = Template.objects.all()
     return render(request, 'accounts/templates.html', {'templates': templates})
 
-def customer(request):
-    return render(request, 'accounts/customer.html')
+def customer(request, pk):
+    customer = Customer.objects.get(id=pk)
+    websites = customer.website_set.all()
+    website_count = websites.count()
+    context = {'customer':customer, 'websites': websites, 'website_count': website_count}
+    return render(request, 'accounts/customer.html', context)
