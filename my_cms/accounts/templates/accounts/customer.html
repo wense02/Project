@@ -66,8 +66,8 @@
                     <td>{{website.template}}</td>
                     <td>{{website.date_created}}</td>
                     <td>{{website.status}}</td>
-                    <td><a href="" class="btn btn-sm btn-info">Update</a></td>
-                    <td><a href="" class="btn btn-sm btn-danger">Remove</a></td>
+                    <td><a href="{% url 'update_website' website.id %}" class="btn btn-sm btn-info">Update</a></td>
+                    <td><a href="{% url 'delete_website' website.id %}" class="btn btn-sm btn-danger">Remove</a></td>
                 </tr>
                 {% endfor %}
 			</table>

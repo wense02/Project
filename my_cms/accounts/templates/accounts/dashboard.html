@@ -32,7 +32,7 @@
 		<h5>LAST 5 WEBSITES</h5>
 		<hr>
 		<div class="card card-body">
-			<a class="btn btn-primary  btn-sm btn-block" href="">Create More Websites</a>
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'create_website' %}">Create More Websites</a>
 			<table class="table table-sm">
 				<tr>
 					<th>Websites</th>
@@ -46,8 +46,8 @@
                         <td>{{website.name}}</td>
                         <td>{{website.date_created}}</td>
                         <td>{{website.status}}</td>
-                        <td><a href="">Update</a></td>
-                        <td><a href="">Delete</a></td>
+                        <td><a href="{% url 'update_website' website.id %}">Update</a></td>
+                        <td><a href="{% url 'delete_website' website.id %}">Delete</a></td>
                     </tr>
                 {% endfor %}
 			</table>

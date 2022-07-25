@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import *
+from .forms import WebsiteForm
 
 # Create your views here.
 def home(request):
@@ -21,3 +22,32 @@ def customer(request, pk):
     website_count = websites.count()
     context = {'customer':customer, 'websites': websites, 'website_count': website_count}
     return render(request, 'accounts/customer.html', context)
+
+def createWebsite(request):
+    form = WebsiteForm()
+    if request.method == 'POST':
+        form = WebsiteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    context = {'form': form}
+    return render(request, 'accounts/website_form.html', context)
+
+def updateWebsite(request, pk):
+    website = Website.objects.get(id=pk)
+    form = WebsiteForm(instance=website)
+    if request.method == 'POST':
+        form = WebsiteForm(request.POST, instance=website)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    context = {'form': form}
+    return render(request, 'accounts/website_form.html', context)
+
+def deleteWebsite(request, pk):
+    website = Website.objects.get(id=pk)
+    if request.method == 'POST':
+        website.delete()
+        return redirect('/')
+    context = {'item': website}
+    return render(request, 'accounts/delete.html', context)
