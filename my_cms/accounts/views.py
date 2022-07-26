@@ -18,11 +18,6 @@ def registerPage(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             user = form.save()
-            group = Group.objects.get(name='Customer')
-            user.groups.add(group)
-            Customer.objects.create(
-                user=user,
-            )
             messages.success(request, 'Account created successfully')
             return redirect('login')
     context = {'form' :form}

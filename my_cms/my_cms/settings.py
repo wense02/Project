@@ -42,7 +42,7 @@ INSTALLED_APPS = [
 
     #3rd party
     'django_extensions',
-    'accounts'
+    'accounts.apps.AccountsConfig'
 ]
 
 MIDDLEWARE = [
