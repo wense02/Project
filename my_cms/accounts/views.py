@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 from .models import *
-from .forms import WebsiteForm, CreateUserForm
+from .forms import WebsiteForm, CreateUserForm, CustomerForm
 from .decorators import unauthenticated_user, allowed_users, admin_only
 
 
@@ -67,6 +67,19 @@ def CustomerPage(request):
     incomplete_websites = websites.filter(status='Incomplete').count()
     context = {'websites': websites, 'total_websites':total_websites, 'incomplete_websites': incomplete_websites}
     return render(request, 'accounts/customer_dashboard.html', context)
+
+
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['Customer'])
+def accountSettings(request): 
+    customer = request.user.customer
+    form = CustomerForm(instance=customer)
+    if request.method == 'POST':
+        form = CustomerForm(request.POST, request.FILES, instance=customer)
+        if form.is_valid():
+            form.save()
+    context = {'form': form}
+    return render(request, 'accounts/account_settings.html', context)
 
 
 @login_required(login_url='login')
