@@ -1,0 +1,28 @@
+{% extends 'accounts/base.html' %}
+{% block content %}
+{% include 'accounts/status.html' %}
+
+<div class="row">
+    <div class="col-md">
+		<h5>LAST 5 WEBSITES</h5>
+		<hr>
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Websites</th>
+					<th>Date Created</th>
+					<th>Status</th>
+				</tr>
+                {% for website in websites %}
+                    <tr>
+                        <td>{{website.name}}</td>
+                        <td>{{website.date_created}}</td>
+                        <td>{{website.status}}</td>
+                    </tr>
+                {% endfor %}
+			</table>
+		</div>
+</div>
+</div>
+
+{% endblock content %}
