@@ -13,5 +13,6 @@ urlpatterns = [
     path('create_website/', views.createWebsite, name='create_website'),
     path('update_website/<str:pk>', views.updateWebsite, name='update_website'),
     path('delete_website/<str:pk>', views.deleteWebsite, name='delete_website'),
-    
+    #password reset Url
+    path('password_reset/', views.password_reset_request, name='password_reset')
 ]

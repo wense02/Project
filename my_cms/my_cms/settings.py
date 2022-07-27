@@ -42,7 +42,8 @@ INSTALLED_APPS = [
 
     #3rd party
     'django_extensions',
-    'accounts.apps.AccountsConfig'
+    'accounts.apps.AccountsConfig',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -133,3 +134,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#added for email
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
